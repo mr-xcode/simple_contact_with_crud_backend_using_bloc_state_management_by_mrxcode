@@ -96,6 +96,25 @@ class _ContactFormState extends State<ContactForm> {
       _email,
       _address;
 
+  List<String> items = [
+    'Ayeyarwady Region',
+    'Bago Region',
+    'Chin State',
+    'Kachin State',
+    'Kayin State',
+    'Kayah State',
+    'Magway Region',
+    'Mandalay Region',
+    'Mon State',
+    'Rakhine State',
+    'Sagaing Region',
+    'Shan State',
+    'Tanintharyi Region',
+    'Yangon Region',
+  ];
+  String selectedItem = 'Yangon Region';
+  String? dropdown;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -244,20 +263,35 @@ class _ContactFormState extends State<ContactForm> {
           ),
 
           // Address
-          TextFormField(
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Address',
-            ),
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Please enter Address';
-              }
-              return null;
-            },
-            onSaved: (value) {
-              _address = value ?? '';
-            },
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Address: ",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              ),
+              DropdownButton<String>(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                borderRadius: BorderRadius.circular(10),
+                hint: Text("Address: "),
+                style: TextStyle(
+                  color: GFColors.DARK,
+                ),
+                value: selectedItem,
+                onChanged: (newValue) {
+                  setState(() {
+                    selectedItem = newValue ?? '';
+                  });
+                  _address = selectedItem.toString();
+                },
+                items: items.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ],
           ),
           const SizedBox(
             height: 9,
@@ -268,6 +302,11 @@ class _ContactFormState extends State<ContactForm> {
             color: GFColors.ALT,
             textColor: Colors.white,
             shape: GFButtonShape.pills,
+            icon: Icon(
+              Icons.add,
+              size: 19,
+              color: Colors.white,
+            ),
             textStyle: const TextStyle(fontWeight: FontWeight.w600),
             onPressed: () {
               if (formKey.currentState!.validate()) {
@@ -286,7 +325,7 @@ class _ContactFormState extends State<ContactForm> {
                 BlocProvider.of<PostContactCubit>(context).addContact(contact);
               }
             },
-            child: const Text('Add'),
+            child: const Text('Add Contact'),
           ),
         ],
       ),

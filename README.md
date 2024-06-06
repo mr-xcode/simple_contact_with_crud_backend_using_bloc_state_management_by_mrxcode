@@ -15,4 +15,4 @@ when pressed on list item, it route to detailed view.
 
 list items are slidable, from left to right for edit and from right to left for delete.
 
-
+this app was tested on Android, macOS, and web.
