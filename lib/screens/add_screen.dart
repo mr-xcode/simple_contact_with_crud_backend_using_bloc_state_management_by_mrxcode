@@ -115,6 +115,9 @@ class _ContactFormState extends State<ContactForm> {
   String selectedItem = 'Yangon Region';
   String? dropdown;
 
+  List<String> genderList = ['Male', 'Female', 'Other'];
+  String genderSelectedItem = 'Male';
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -202,26 +205,6 @@ class _ContactFormState extends State<ContactForm> {
             height: 9,
           ),
 
-          // Gender
-          TextFormField(
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Gender (Male/ Female ?)',
-            ),
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Please enter Gender';
-              }
-              return null;
-            },
-            onSaved: (value) {
-              _gender = value ?? '';
-            },
-          ),
-          const SizedBox(
-            height: 9,
-          ),
-
           // Phone
           TextFormField(
             decoration: const InputDecoration(
@@ -261,6 +244,43 @@ class _ContactFormState extends State<ContactForm> {
           const SizedBox(
             height: 9,
           ),
+
+          // Gender
+          // ----------- start
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Gender: ",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              ),
+              DropdownButton<String>(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                borderRadius: BorderRadius.circular(10),
+                hint: Text("Gender: "),
+                style: TextStyle(
+                  color: GFColors.DARK,
+                ),
+                value: genderSelectedItem,
+                onChanged: (newValue) {
+                  setState(() {
+                    genderSelectedItem = newValue ?? '';
+                  });
+                  _gender = selectedItem.toString();
+                },
+                items: genderList.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 9,
+          ),
+          // ----------- end
 
           // Address
           Row(
