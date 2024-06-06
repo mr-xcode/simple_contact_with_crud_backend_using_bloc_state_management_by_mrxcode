@@ -7,8 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:simple_contact_with_crud_backend_using_bloc_state_maanagement_by_mrxcode/main.dart';
+import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

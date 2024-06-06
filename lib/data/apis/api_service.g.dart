@@ -14,7 +14,7 @@ class _ApiService implements ApiService {
     this.baseUrl,
   }) {
     baseUrl ??=
-        'https://crudcrud.com/api/ebc89bbbf8f74740af9ff2df106daee3/contacts/';
+        'https://crudcrud.com/api/43c5ed5803ef405dacd42ba0a6b722de/contacts/';
   }
 
   final Dio _dio;
@@ -54,7 +54,7 @@ class _ApiService implements ApiService {
   Future<Contact> addContact(Contact contact) async {
     Dio dio = Dio();
     String url =
-        'https://crudcrud.com/api/ebc89bbbf8f74740af9ff2df106daee3/contacts/';
+        'https://crudcrud.com/api/43c5ed5803ef405dacd42ba0a6b722de/contacts/';
 
     Map<String, dynamic> data = {
       'firstName': contact.firstName,
@@ -115,7 +115,7 @@ class _ApiService implements ApiService {
   ) async {
     Dio dio = Dio();
     String url =
-        'https://crudcrud.com/api/ebc89bbbf8f74740af9ff2df106daee3/contacts/${id}';
+        'https://crudcrud.com/api/43c5ed5803ef405dacd42ba0a6b722de/contacts/${id}';
 
     // Define the data to be updated
     Map<String, dynamic> data = {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_maanagement_by_mrxcode/blocs/create/cubit/post_contact_cubit.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_maanagement_by_mrxcode/data/models/contact.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_maanagement_by_mrxcode/module.dart';
+import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/blocs/create/cubit/post_contact_cubit.dart';
+import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/data/models/contact.dart';
+import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/module.dart';
 
 class AddScreen extends StatelessWidget {
   const AddScreen({super.key});
@@ -14,7 +14,15 @@ class AddScreen extends StatelessWidget {
       create: (context) => PostContactCubit(getIt.call()),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Add'),
+          iconTheme: IconThemeData(color: Colors.white),
+          title: Text(
+            'Add Contact',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          backgroundColor: Colors.deepPurple[400],
         ),
         body: BlocBuilder<PostContactCubit, PostContactState>(
             builder: (context, state) {
@@ -31,12 +39,34 @@ class AddScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Success'),
+                  Text(
+                    'Success',
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 33,
+                  ),
                   GFButton(
                     onPressed: () {
                       Navigator.pop(context, 'success');
                     },
-                    child: Text('Go Home'),
+                    blockButton: true,
+                    color: GFColors.SUCCESS,
+                    icon: Icon(
+                      Icons.home,
+                      color: Colors.white,
+                    ),
+                    shape: GFButtonShape.pills,
+                    textStyle: TextStyle(fontWeight: FontWeight.w600),
+                    child: Text(
+                      'Go Home',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -239,6 +269,9 @@ class _ContactFormState extends State<ContactForm> {
 
           // Summit Button
           GFButton(
+            color: GFColors.ALT,
+            textColor: Colors.white,
+            textStyle: TextStyle(fontWeight: FontWeight.w600),
             onPressed: () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();

@@ -1,5 +1,5 @@
-import 'package:simple_contact_with_crud_backend_using_bloc_state_maanagement_by_mrxcode/data/apis/api_service.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_maanagement_by_mrxcode/data/models/contact.dart';
+import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/data/apis/api_service.dart';
+import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/data/models/contact.dart';
 
 class ContactRepository {
   final ApiService _apiService;

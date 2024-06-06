@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_maanagement_by_mrxcode/blocs/read/cubit/get_contact_cubit.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_maanagement_by_mrxcode/data/models/contact.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_maanagement_by_mrxcode/screens/add_screen.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_maanagement_by_mrxcode/screens/edit_screen.dart';
+import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/blocs/read/cubit/get_contact_cubit.dart';
+import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/data/models/contact.dart';
+import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/screens/add_screen.dart';
+import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/screens/edit_screen.dart';
+import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/widgets/my_bottom_sheet.dart';
+import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/widgets/my_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,11 +18,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   var myGlobalContext;
+  final GFBottomSheetController _controller = GFBottomSheetController();
   @override
   Widget build(BuildContext context) {
     myGlobalContext = context;
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         title: Text(
           'Contact',
           style: TextStyle(
@@ -28,8 +32,23 @@ class _HomeScreenState extends State<HomeScreen> {
             fontWeight: FontWeight.w600,
           ),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              _controller.isBottomSheetOpened
+                  ? _controller.hideBottomSheet()
+                  : _controller.showBottomSheet();
+            },
+            icon: Icon(Icons.info_outline_rounded),
+          ),
+          SizedBox(
+            width: 9,
+          ),
+        ],
         backgroundColor: Colors.deepPurple[400],
       ),
+      drawer: MyDrawer(),
+      bottomSheet: MyBottomSheet(controller: _controller),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           var result = await Navigator.of(context)

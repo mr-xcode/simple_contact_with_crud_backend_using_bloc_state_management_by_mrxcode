@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:getwidget/components/button/gf_button.dart';
 import 'package:getwidget/components/loader/gf_loader.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_maanagement_by_mrxcode/blocs/update/cubit/edit_contact_cubit.dart';
-
-import 'package:simple_contact_with_crud_backend_using_bloc_state_maanagement_by_mrxcode/data/models/contact.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_maanagement_by_mrxcode/module.dart';
+import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/blocs/update/cubit/edit_contact_cubit.dart';
+import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/data/models/contact.dart';
+import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/module.dart';
 
 class EditScreen extends StatelessWidget {
   final Contact contact;
@@ -21,7 +20,15 @@ class EditScreen extends StatelessWidget {
       create: (context) => EditContactCubit(getIt.call()),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Edit'),
+          iconTheme: IconThemeData(color: Colors.white),
+          title: Text(
+            'Edit',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          backgroundColor: Colors.deepPurple[400],
         ),
         body: BlocBuilder<EditContactCubit, EditContactState>(
             builder: (context, state) {
