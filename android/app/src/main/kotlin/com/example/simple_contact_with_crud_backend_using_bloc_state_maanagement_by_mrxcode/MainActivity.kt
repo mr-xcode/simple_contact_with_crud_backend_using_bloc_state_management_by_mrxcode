@@ -1,0 +1,5 @@
+package com.example.simple_contact_with_crud_backend_using_bloc_state_maanagement_by_mrxcode
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity()
