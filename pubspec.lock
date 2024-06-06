@@ -185,6 +185,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.6"
+  date_cupertino_bottom_sheet_picker:
+    dependency: "direct main"
+    description:
+      name: date_cupertino_bottom_sheet_picker
+      sha256: ff5544ce4bc14d2593b125e63554ba4a594a49c670fb6eee857b7ca84c65eada
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.4"
   dio:
     dependency: "direct main"
     description:
@@ -315,6 +323,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      sha256: d6f56758b7d3014a48af9701c085700aac781a92a87a62b1333b46d8879661cf
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.19.0"
   io:
     dependency: transitive
     description:

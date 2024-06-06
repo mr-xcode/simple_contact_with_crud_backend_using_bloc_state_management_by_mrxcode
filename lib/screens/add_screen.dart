@@ -1,3 +1,4 @@
+import 'package:date_cupertino_bottom_sheet_picker/date_cupertino_bottom_sheet_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:getwidget/getwidget.dart';
@@ -118,6 +119,9 @@ class _ContactFormState extends State<ContactForm> {
   List<String> genderList = ['Male', 'Female', 'Other'];
   String genderSelectedItem = 'Male';
 
+  DateTime? selectedDate = DateTime(2012, 6, 7);
+  String? dateBirth;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -185,26 +189,6 @@ class _ContactFormState extends State<ContactForm> {
             height: 9,
           ),
 
-          // DOB Picker
-          TextFormField(
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Date Of Birth (30-12-2000)',
-            ),
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Please enter DOB';
-              }
-              return null;
-            },
-            onSaved: (value) {
-              _dateOfBirth = value ?? '';
-            },
-          ),
-          const SizedBox(
-            height: 9,
-          ),
-
           // Phone
           TextFormField(
             decoration: const InputDecoration(
@@ -244,6 +228,48 @@ class _ContactFormState extends State<ContactForm> {
           const SizedBox(
             height: 9,
           ),
+
+          // DOB Picker
+          const SizedBox(
+            height: 9,
+          ),
+
+          // ------------- start
+          Center(
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.9,
+              child: DateCupertinoBottomSheetPicker(
+                width: 1.0, // Changed width 0 to 1.0
+                firstDate: DateTime(1950),
+                lastDate: DateTime.now(),
+                selectedDate: selectedDate,
+                labelText: 'Date of birth...',
+                labelTaxtColor: Colors.black,
+                hintColor: Colors.black,
+                iconColor: Colors.black,
+                minAge: 12,
+                height: 19,
+                paddingVertical: 0,
+                borderRadius: 8.0,
+                cursorColor: Colors.black,
+                style: const TextStyle(color: Colors.black),
+                borderColor: Colors.black,
+                focusedBorderColor: Colors.black,
+                enabledBorderColor: Colors.black,
+                onChanged: (dateTime) {
+                  selectedDate = dateTime;
+                  dateBirth = dateTime.toString();
+                  var onlyDate = dateBirth!.substring(0, 10);
+                  setState(() {
+                    _dateOfBirth = onlyDate;
+                  });
+
+                  debugPrint("Date of birth: $onlyDate");
+                },
+              ),
+            ),
+          ),
+          // ------------- end
 
           // Gender
           // ----------- start

@@ -1,4 +1,4 @@
-# simple_contact_with_crud_backend_using_bloc_state_maanagement_by_mrxcode
+# A Simple Flutter Contact App bymrxcode
 
 A simple flutter contact app with curdcur.com as backend using bloc state management.
 

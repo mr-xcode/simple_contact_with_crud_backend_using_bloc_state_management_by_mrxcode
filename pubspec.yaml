@@ -21,6 +21,7 @@ dependencies:
   getwidget: ^4.0.0
   retrofit_generator: ^8.1.0
   build_runner: ^2.4.11
+  date_cupertino_bottom_sheet_picker: ^0.0.4
 
 dev_dependencies:
   flutter_test:
