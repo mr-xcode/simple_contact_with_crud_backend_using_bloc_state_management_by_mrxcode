@@ -1,16 +1,18 @@
 # simple_contact_with_crud_backend_using_bloc_state_maanagement_by_mrxcode
 
-A new Flutter project.
+A simple flutter contact app with curdcur.com as backend using bloc state management.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+if App cannot strat successfully try with new api link from curdcurd.com bez it expired within 24 hrs.
+if we got api link, all we have to edit is at ApiService folder.
 
-A few resources to get you started if this is your first Flutter project:
+this app can make basic crud operation
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+floating action button is for adding new contact.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+when pressed on list item, it route to detailed view.
+
+list items are slidable, from left to right for edit and from right to left for delete.
+
+
