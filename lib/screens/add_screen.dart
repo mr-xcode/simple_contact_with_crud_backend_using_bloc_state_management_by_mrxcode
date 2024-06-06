@@ -69,6 +69,7 @@ class _ContactFormState extends State<ContactForm> {
       _phone,
       _email,
       _address;
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -95,9 +96,6 @@ class _ContactFormState extends State<ContactForm> {
           SizedBox(
             height: 9,
           ),
-          SizedBox(
-            height: 9,
-          ),
 
           // Last Name
           TextFormField(
@@ -113,6 +111,126 @@ class _ContactFormState extends State<ContactForm> {
             },
             onSaved: (value) {
               this._lastName = value ?? '';
+            },
+          ),
+          SizedBox(
+            height: 9,
+          ),
+
+          // Nick Name
+          TextFormField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Nick Name',
+            ),
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'Please enter Nick Name';
+              }
+              return null;
+            },
+            onSaved: (value) {
+              this._nickName = value ?? '';
+            },
+          ),
+          SizedBox(
+            height: 9,
+          ),
+
+          // DOB Picker
+          TextFormField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Date Of Birth (30-12-2000)',
+            ),
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'Please enter DOB';
+              }
+              return null;
+            },
+            onSaved: (value) {
+              this._dateOfBirth = value ?? '';
+            },
+          ),
+          SizedBox(
+            height: 9,
+          ),
+
+          // Gender
+          TextFormField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Gender (Male/ Female ?)',
+            ),
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'Please enter Gender';
+              }
+              return null;
+            },
+            onSaved: (value) {
+              this._gender = value ?? '';
+            },
+          ),
+          SizedBox(
+            height: 9,
+          ),
+
+          // Phone
+          TextFormField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Phone',
+            ),
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'Please enter Phone';
+              }
+              return null;
+            },
+            onSaved: (value) {
+              this._phone = value ?? '';
+            },
+          ),
+          SizedBox(
+            height: 9,
+          ),
+
+          // Email
+          TextFormField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Email',
+            ),
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'Please enter Email';
+              }
+              return null;
+            },
+            onSaved: (value) {
+              this._email = value ?? '';
+            },
+          ),
+          SizedBox(
+            height: 9,
+          ),
+
+          // Address
+          TextFormField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Address',
+            ),
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'Please enter Address';
+              }
+              return null;
+            },
+            onSaved: (value) {
+              this._address = value ?? '';
             },
           ),
           SizedBox(

@@ -114,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         child: ListTile(
-          title: Text(contact.firstName + contact.lastName),
+          title: Text('${contact.firstName} ${contact.lastName}'),
         ),
       ),
     );

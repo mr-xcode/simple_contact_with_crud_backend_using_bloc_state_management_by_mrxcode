@@ -14,6 +14,6 @@ class PostContactCubit extends Cubit<PostContactState> {
     _contactRepository
         .addContact(contact)
         .then((value) => emit(PostContactSuccess()))
-        .catchError((e) => emit(PostContactFail(error: e)));
+        .catchError((e) => emit(PostContactFail(error: e.toString())));
   }
 }

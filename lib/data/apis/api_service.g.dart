@@ -52,30 +52,60 @@ class _ApiService implements ApiService {
 
   @override
   Future<Contact> addContact(Contact contact) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(contact.toJson());
-    final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Contact>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = Contact.fromJson(_result.data!);
-    return value;
+    Dio dio = Dio();
+    String url =
+        'https://crudcrud.com/api/ebc89bbbf8f74740af9ff2df106daee3/contacts/';
+
+    Map<String, dynamic> data = {
+      'firstName': contact.firstName,
+      'lastName': contact.lastName,
+      'nickName': contact.nickName,
+      'dateOfBirth': contact.dateOfBirth,
+      'gender': contact.gender,
+      'phone': contact.phone,
+      'email': contact.email,
+      'address': contact.address,
+    };
+
+    try {
+      // Make the PUT request
+      Response response = await dio.post(
+        url,
+        data: data,
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        ),
+      );
+
+      // Check the response status code
+      if (response.statusCode == 200) {
+        print('User added successfully:');
+        print(response.data);
+        return Contact.fromJson(response.data);
+      } else {
+        print('Error adding user:');
+        print(response.data);
+      }
+    } catch (e) {
+      if (e is DioException) {
+        print('Dio error: $e.');
+      } else {
+        print('General error: $e');
+      }
+    }
+
+    return Contact(
+        id: '',
+        firstName: 'dummyName',
+        lastName: 'dummyLastName',
+        nickName: 'dummyNickName',
+        dateOfBirth: 'dummyDOB',
+        gender: 'dummyGender',
+        phone: 'dummyPhone',
+        email: 'dummyEmail',
+        address: 'dummyAddress');
   }
 
   @override
@@ -83,27 +113,49 @@ class _ApiService implements ApiService {
     String id,
     Contact contact,
   ) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(contact.toJson());
-    await _dio.fetch<void>(_setStreamType<void>(Options(
-      method: 'PUT',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/${id}',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        ))));
+    Dio dio = Dio();
+    String url =
+        'https://crudcrud.com/api/ebc89bbbf8f74740af9ff2df106daee3/contacts/${id}';
+
+    // Define the data to be updated
+    Map<String, dynamic> data = {
+      'firstName': contact.firstName,
+      'lastName': contact.lastName,
+      'nickName': contact.nickName,
+      'dateOfBirth': contact.dateOfBirth,
+      'gender': contact.gender,
+      'phone': contact.phone,
+      'email': contact.email,
+      'address': contact.address,
+    };
+
+    try {
+      // Make the PUT request
+      Response response = await dio.put(
+        url,
+        data: data,
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        ),
+      );
+
+      // Check the response status code
+      if (response.statusCode == 200) {
+        print('User updated successfully:');
+        print(response.data);
+      } else {
+        print('Error updating user:');
+        print(response.data);
+      }
+    } catch (e) {
+      if (e is DioException) {
+        print('Dio error: $e.');
+      } else {
+        print('General error: $e');
+      }
+    }
   }
 
   @override
