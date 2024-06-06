@@ -1,7 +1,8 @@
 // ignore: depend_on_referenced_packages
+import 'package:Contact_Plus/data/contact_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/data/contact_repository.dart';
+
 import '../../../data/models/contact.dart';
 
 part 'get_contact_state.dart';

@@ -1,8 +1,9 @@
 // ignore: depend_on_referenced_packages
+import 'package:Contact_Plus/data/contact_repository.dart';
+import 'package:Contact_Plus/data/models/contact.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/data/contact_repository.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/data/models/contact.dart';
+
 part 'post_contact_state.dart';
 
 class PostContactCubit extends Cubit<PostContactState> {

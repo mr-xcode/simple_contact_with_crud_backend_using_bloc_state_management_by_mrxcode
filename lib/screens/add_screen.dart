@@ -1,11 +1,11 @@
+import 'package:Contact_Plus/blocs/create/cubit/post_contact_cubit.dart';
+import 'package:Contact_Plus/data/models/contact.dart';
+import 'package:Contact_Plus/module.dart';
 import 'package:date_cupertino_bottom_sheet_picker/date_cupertino_bottom_sheet_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_utils/src/get_utils/get_utils.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/blocs/create/cubit/post_contact_cubit.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/data/models/contact.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/module.dart';
 
 class AddScreen extends StatelessWidget {
   const AddScreen({super.key});

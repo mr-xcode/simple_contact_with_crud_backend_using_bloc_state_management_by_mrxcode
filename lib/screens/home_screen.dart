@@ -1,14 +1,14 @@
+import 'package:Contact_Plus/blocs/read/cubit/get_contact_cubit.dart';
+import 'package:Contact_Plus/data/models/contact.dart';
+import 'package:Contact_Plus/screens/add_screen.dart';
+import 'package:Contact_Plus/screens/detailed_screen.dart';
+import 'package:Contact_Plus/screens/edit_screen.dart';
+import 'package:Contact_Plus/widgets/my_bottom_sheet.dart';
+import 'package:Contact_Plus/widgets/my_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/blocs/read/cubit/get_contact_cubit.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/data/models/contact.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/screens/add_screen.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/screens/detailed_screen.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/screens/edit_screen.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/widgets/my_bottom_sheet.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/widgets/my_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

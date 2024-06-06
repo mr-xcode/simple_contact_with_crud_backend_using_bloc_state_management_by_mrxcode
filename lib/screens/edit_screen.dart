@@ -1,12 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:Contact_Plus/blocs/update/cubit/edit_contact_cubit.dart';
+import 'package:Contact_Plus/data/models/contact.dart';
+import 'package:Contact_Plus/module.dart';
 import 'package:date_cupertino_bottom_sheet_picker/date_cupertino_bottom_sheet_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_utils/src/get_utils/get_utils.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/blocs/update/cubit/edit_contact_cubit.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/data/models/contact.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/module.dart';
 
 class EditScreen extends StatelessWidget {
   final Contact contact;

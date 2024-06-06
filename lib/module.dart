@@ -1,8 +1,8 @@
+import 'package:Contact_Plus/blocs/read/cubit/get_contact_cubit.dart';
+import 'package:Contact_Plus/data/apis/api_service.dart';
+import 'package:Contact_Plus/data/contact_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/blocs/read/cubit/get_contact_cubit.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/data/apis/api_service.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/data/contact_repository.dart';
 
 var getIt = GetIt.I;
 

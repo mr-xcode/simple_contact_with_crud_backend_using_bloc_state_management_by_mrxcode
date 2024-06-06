@@ -1,7 +1,8 @@
+import 'package:Contact_Plus/data/models/contact.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/data/models/contact.dart';
+
 part 'api_service.g.dart';
 
 @RestApi(
