@@ -125,6 +125,7 @@ class _ContactFormState extends State<ContactForm> {
 
   @override
   Widget build(BuildContext context) {
+    _dateOfBirth = selectedDate.toString();
     return Form(
       key: formKey,
       child: ListView(
@@ -209,6 +210,8 @@ class _ContactFormState extends State<ContactForm> {
                 return 'Please enter valid phone number';
               } else if (value.substring(0, 2) != '09') {
                 return 'Phone number in Myanmar start with 09';
+              } else if (value.length > 11) {
+                return 'Please check your number again! ';
               }
               return null;
             },

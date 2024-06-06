@@ -143,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             trailing: SizedBox(
-              width: 100,
+              width: 110,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

@@ -45,11 +45,28 @@ class EditScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text('Success'),
+                  const Text(
+                    'Success',
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 33,
+                  ),
                   GFButton(
                     onPressed: () {
                       Navigator.pop(context, 'success');
                     },
+                    blockButton: true,
+                    color: GFColors.SUCCESS,
+                    icon: const Icon(
+                      Icons.home,
+                      color: Colors.white,
+                    ),
+                    shape: GFButtonShape.pills,
+                    textStyle: const TextStyle(fontWeight: FontWeight.w600),
                     child: const Text('Go Home'),
                   ),
                 ],
@@ -113,10 +130,15 @@ class _ContactFormState extends State<ContactForm> {
   String genderSelectedItem = 'Male';
 
   DateTime? selectedDate = DateTime(2012, 6, 7);
+
   String? dateBirth;
 
   @override
   Widget build(BuildContext context) {
+    _dateOfBirth = selectedDate.toString();
+    _gender = genderSelectedItem;
+    _address = selectedItem;
+    //contact.gender;
     return Form(
       key: formKey,
       child: ListView(
@@ -367,7 +389,7 @@ class _ContactFormState extends State<ContactForm> {
                     firstName: _firstName,
                     lastName: _lastName,
                     nickName: _nickName,
-                    dateOfBirth: _dateOfBirth,
+                    dateOfBirth: _dateOfBirth ?? contact.dateOfBirth,
                     gender: _gender,
                     phone: _phone,
                     email: _email,
