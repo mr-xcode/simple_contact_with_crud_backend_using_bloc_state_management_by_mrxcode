@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/data/contact_repository.dart';

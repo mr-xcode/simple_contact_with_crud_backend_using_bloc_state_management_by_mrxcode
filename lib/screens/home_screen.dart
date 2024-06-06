@@ -18,6 +18,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // ignore: prefer_typing_uninitialized_variables
   var myGlobalContext;
   final GFBottomSheetController _controller = GFBottomSheetController();
   @override
@@ -25,8 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
     myGlobalContext = context;
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white),
-        title: Text(
+        iconTheme: const IconThemeData(color: Colors.white),
+        title: const Text(
           'Contact',
           style: TextStyle(
             color: Colors.white,
@@ -40,26 +41,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   ? _controller.hideBottomSheet()
                   : _controller.showBottomSheet();
             },
-            icon: Icon(Icons.info_outline_rounded),
+            icon: const Icon(Icons.info_outline_rounded),
           ),
-          SizedBox(
+          const SizedBox(
             width: 9,
           ),
         ],
         backgroundColor: Colors.deepPurple[400],
       ),
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       bottomSheet: MyBottomSheet(controller: _controller),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           var result = await Navigator.of(context)
-              .push(MaterialPageRoute(builder: (_) => AddScreen()));
+              .push(MaterialPageRoute(builder: (_) => const AddScreen()));
 
           if (result != null && result == 'success') {
+            // ignore: use_build_context_synchronously
             BlocProvider.of<GetContactCubit>(context).getContact();
           }
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       body: BlocBuilder<GetContactCubit, GetContactState>(
         builder: (context, state) {
@@ -68,14 +70,14 @@ class _HomeScreenState extends State<HomeScreen> {
             return ListView.builder(
                 itemCount: contacts.length,
                 itemBuilder: (context, index) {
-                  return SingleItem(contacts[index]);
+                  return singleItem(contacts[index]);
                 });
           } else if (state is GetContactFail) {
             return Center(
               child: Text(state.error),
             );
           }
-          return Center(
+          return const Center(
             child: GFLoader(),
           );
         },
@@ -83,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget SingleItem(Contact contact) {
+  Widget singleItem(Contact contact) {
     return Card(
       child: Slidable(
         key: const ValueKey(0),
@@ -127,7 +129,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         child: GestureDetector(
           onTap: () {
-            print('pressed');
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (_) => DetailedScreen(
                       contact: contact,
@@ -136,18 +137,27 @@ class _HomeScreenState extends State<HomeScreen> {
           child: ListTile(
             title: Text(
               '${contact.firstName} ${contact.lastName}',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
               ),
             ),
-            trailing: Container(
+            trailing: SizedBox(
               width: 100,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.phone_android_outlined),
-                  Text('${contact.phone}'),
+                  const Icon(
+                    Icons.phone_android_outlined,
+                    color: GFColors.ALT,
+                  ),
+                  Text(
+                    '${contact.phone}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: GFColors.FOCUS,
+                    ),
+                  ),
                 ],
               ),
             ),

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:getwidget/components/avatar/gf_avatar.dart';
-import 'package:getwidget/components/drawer/gf_drawer.dart';
-import 'package:getwidget/components/drawer/gf_drawer_header.dart';
 import 'package:getwidget/getwidget.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -17,7 +14,7 @@ class MyDrawer extends StatelessWidget {
           child: ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[
-              GFDrawerHeader(
+              const GFDrawerHeader(
                 currentAccountPicture: GFAvatar(
                   radius: 80.0,
                   backgroundImage: NetworkImage(
@@ -54,23 +51,23 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
               ListTile(
-                title: Text('Notifications'),
-                leading: Icon(Icons.notifications_outlined),
+                title: const Text('Notifications'),
+                leading: const Icon(Icons.notifications_outlined),
                 onTap: () {},
               ),
               ListTile(
-                title: Text('Reviews'),
-                leading: Icon(Icons.reviews_outlined),
+                title: const Text('Reviews'),
+                leading: const Icon(Icons.reviews_outlined),
                 onTap: () {},
               ),
               ListTile(
-                title: Text('Payments'),
-                leading: Icon(Icons.payment_outlined),
+                title: const Text('Payments'),
+                leading: const Icon(Icons.payment_outlined),
                 onTap: () {},
               ),
               ListTile(
-                title: Text('Settings'),
-                leading: Icon(Icons.settings_outlined),
+                title: const Text('Settings'),
+                leading: const Icon(Icons.settings_outlined),
                 onTap: () {},
               ),
             ],
@@ -86,11 +83,11 @@ class MyDrawer extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.logout,
               color: Colors.white,
             ),
-            child: Text(
+            child: const Text(
               'Sign Out',
               style: TextStyle(
                 fontSize: 16,

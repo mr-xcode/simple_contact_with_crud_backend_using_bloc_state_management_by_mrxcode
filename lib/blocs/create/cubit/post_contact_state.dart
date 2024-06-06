@@ -16,6 +16,7 @@ final class PostContactSuccess extends PostContactState {}
 final class PostContactFail extends PostContactState {
   final String error;
 
+  // ignore: prefer_const_constructors_in_immutables
   PostContactFail({required this.error});
 
   @override

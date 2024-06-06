@@ -14,8 +14,8 @@ class AddScreen extends StatelessWidget {
       create: (context) => PostContactCubit(getIt.call()),
       child: Scaffold(
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.white),
-          title: Text(
+          iconTheme: const IconThemeData(color: Colors.white),
+          title: const Text(
             'Add Contact',
             style: TextStyle(
               color: Colors.white,
@@ -27,26 +27,23 @@ class AddScreen extends StatelessWidget {
         body: BlocBuilder<PostContactCubit, PostContactState>(
             builder: (context, state) {
           if (state is PostContactInitial) {
-            print('State is initial');
             return ContactForm();
           } else if (state is PostContactLoading) {
-            print('State is loading');
             return Center(child: GFLoader());
           } else if (state is PostContactSuccess) {
-            print('state is success');
             return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'Success',
                     style: TextStyle(
                       fontSize: 26,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 33,
                   ),
                   GFButton(
@@ -55,13 +52,13 @@ class AddScreen extends StatelessWidget {
                     },
                     blockButton: true,
                     color: GFColors.SUCCESS,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.home,
                       color: Colors.white,
                     ),
                     shape: GFButtonShape.pills,
-                    textStyle: TextStyle(fontWeight: FontWeight.w600),
-                    child: Text(
+                    textStyle: const TextStyle(fontWeight: FontWeight.w600),
+                    child: const Text(
                       'Go Home',
                       style: TextStyle(
                         fontSize: 18,
@@ -72,7 +69,6 @@ class AddScreen extends StatelessWidget {
               ),
             );
           } else if (state is PostContactFail) {
-            print('state is error');
             return Center(child: Text(state.error));
           }
           return Container();
@@ -105,11 +101,11 @@ class _ContactFormState extends State<ContactForm> {
     return Form(
       key: formKey,
       child: ListView(
-        padding: EdgeInsets.all(9),
+        padding: const EdgeInsets.all(9),
         children: [
           // First Name
           TextFormField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'First Name',
             ),
@@ -120,16 +116,16 @@ class _ContactFormState extends State<ContactForm> {
               return null;
             },
             onSaved: (value) {
-              this._firstName = value ?? '';
+              _firstName = value ?? '';
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 9,
           ),
 
           // Last Name
           TextFormField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Last Name',
             ),
@@ -140,16 +136,16 @@ class _ContactFormState extends State<ContactForm> {
               return null;
             },
             onSaved: (value) {
-              this._lastName = value ?? '';
+              _lastName = value ?? '';
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 9,
           ),
 
           // Nick Name
           TextFormField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Nick Name',
             ),
@@ -160,16 +156,16 @@ class _ContactFormState extends State<ContactForm> {
               return null;
             },
             onSaved: (value) {
-              this._nickName = value ?? '';
+              _nickName = value ?? '';
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 9,
           ),
 
           // DOB Picker
           TextFormField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Date Of Birth (30-12-2000)',
             ),
@@ -180,16 +176,16 @@ class _ContactFormState extends State<ContactForm> {
               return null;
             },
             onSaved: (value) {
-              this._dateOfBirth = value ?? '';
+              _dateOfBirth = value ?? '';
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 9,
           ),
 
           // Gender
           TextFormField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Gender (Male/ Female ?)',
             ),
@@ -200,16 +196,16 @@ class _ContactFormState extends State<ContactForm> {
               return null;
             },
             onSaved: (value) {
-              this._gender = value ?? '';
+              _gender = value ?? '';
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 9,
           ),
 
           // Phone
           TextFormField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Phone',
             ),
@@ -220,16 +216,16 @@ class _ContactFormState extends State<ContactForm> {
               return null;
             },
             onSaved: (value) {
-              this._phone = value ?? '';
+              _phone = value ?? '';
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 9,
           ),
 
           // Email
           TextFormField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Email',
             ),
@@ -240,16 +236,16 @@ class _ContactFormState extends State<ContactForm> {
               return null;
             },
             onSaved: (value) {
-              this._email = value ?? '';
+              _email = value ?? '';
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 9,
           ),
 
           // Address
           TextFormField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Address',
             ),
@@ -260,10 +256,10 @@ class _ContactFormState extends State<ContactForm> {
               return null;
             },
             onSaved: (value) {
-              this._address = value ?? '';
+              _address = value ?? '';
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 9,
           ),
 
@@ -271,7 +267,8 @@ class _ContactFormState extends State<ContactForm> {
           GFButton(
             color: GFColors.ALT,
             textColor: Colors.white,
-            textStyle: TextStyle(fontWeight: FontWeight.w600),
+            shape: GFButtonShape.pills,
+            textStyle: const TextStyle(fontWeight: FontWeight.w600),
             onPressed: () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
@@ -286,11 +283,10 @@ class _ContactFormState extends State<ContactForm> {
                     email: _email,
                     address: _address);
 
-                //context.bloc<PostcontactCubit>().addContact(contact);
                 BlocProvider.of<PostContactCubit>(context).addContact(contact);
               }
             },
-            child: Text('Add'),
+            child: const Text('Add'),
           ),
         ],
       ),

@@ -11,6 +11,7 @@ part of 'api_service.dart';
 class _ApiService implements ApiService {
   _ApiService(
     this._dio, {
+    // ignore: unused_element
     this.baseUrl,
   }) {
     baseUrl ??=
@@ -81,19 +82,11 @@ class _ApiService implements ApiService {
 
       // Check the response status code
       if (response.statusCode == 200) {
-        print('User added successfully:');
-        print(response.data);
         return Contact.fromJson(response.data);
-      } else {
-        print('Error adding user:');
-        print(response.data);
-      }
+      } else {}
     } catch (e) {
       if (e is DioException) {
-        print('Dio error: $e.');
-      } else {
-        print('General error: $e');
-      }
+      } else {}
     }
 
     return Contact(
@@ -143,18 +136,10 @@ class _ApiService implements ApiService {
 
       // Check the response status code
       if (response.statusCode == 200) {
-        print('User updated successfully:');
-        print(response.data);
-      } else {
-        print('Error updating user:');
-        print(response.data);
-      }
+      } else {}
     } catch (e) {
       if (e is DioException) {
-        print('Dio error: $e.');
-      } else {
-        print('General error: $e');
-      }
+      } else {}
     }
   }
 

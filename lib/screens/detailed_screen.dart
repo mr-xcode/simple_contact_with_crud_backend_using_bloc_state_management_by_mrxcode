@@ -5,6 +5,7 @@ import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_
 
 class DetailedScreen extends StatelessWidget {
   final Contact contact;
+  // ignore: use_super_parameters
   const DetailedScreen({
     Key? key,
     required this.contact,
@@ -14,19 +15,19 @@ class DetailedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.share_rounded),
+            icon: const Icon(Icons.share_rounded),
           ),
-          SizedBox(
+          const SizedBox(
             width: 9,
           ),
         ],
         title: Text(
           '${contact.firstName} ${contact.lastName}',
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w600,
           ),
@@ -34,6 +35,7 @@ class DetailedScreen extends StatelessWidget {
         backgroundColor: Colors.deepPurple[400],
       ),
       body: Container(
+        padding: const EdgeInsets.all(9),
         child: Column(
           children: [
             // Name
@@ -44,7 +46,7 @@ class DetailedScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Name: '),
+                    const Text('Name: '),
                     Text('${contact.firstName}  ${contact.lastName}'),
                   ],
                 ),
@@ -59,8 +61,8 @@ class DetailedScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Nick Name: '),
-                    Text('${contact.nickName}'),
+                    const Text('Nick Name: '),
+                    Text(contact.nickName),
                   ],
                 ),
               ),
@@ -74,8 +76,8 @@ class DetailedScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Birthday: '),
-                    Text('${contact.dateOfBirth}'),
+                    const Text('Birthday: '),
+                    Text(contact.dateOfBirth),
                   ],
                 ),
               ),
@@ -89,8 +91,8 @@ class DetailedScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Gendre: '),
-                    Text('${contact.gender}'),
+                    const Text('Gendre: '),
+                    Text(contact.gender),
                   ],
                 ),
               ),
@@ -104,8 +106,8 @@ class DetailedScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Phone: '),
-                    Text('${contact.phone}'),
+                    const Text('Phone: '),
+                    Text(contact.phone),
                   ],
                 ),
               ),
@@ -119,8 +121,8 @@ class DetailedScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Email: '),
-                    Text('${contact.email}'),
+                    const Text('Email: '),
+                    Text(contact.email),
                   ],
                 ),
               ),
@@ -134,13 +136,13 @@ class DetailedScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Address: '),
-                    Text('${contact.address}'),
+                    const Text('Address: '),
+                    Text(contact.address),
                   ],
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 19,
             ),
             GFButton(
@@ -148,13 +150,13 @@ class DetailedScreen extends StatelessWidget {
                 Navigator.of(context).pop();
               },
               blockButton: true,
-              icon: Icon(
+              icon: const Icon(
                 Icons.home_outlined,
                 color: Colors.white,
               ),
               color: GFColors.ALT,
               shape: GFButtonShape.pills,
-              child: Text(
+              child: const Text(
                 'Home',
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
               ),

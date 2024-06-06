@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:label="simple_contact_with_crud_backend_using_bloc_state_maanagement_by_mrxcode"
         android:name="${applicationName}"

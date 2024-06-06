@@ -16,6 +16,7 @@ final class EditContactSuccess extends EditContactState {}
 final class EditContactFail extends EditContactState {
   final String error;
 
+  // ignore: prefer_const_constructors_in_immutables
   EditContactFail({required this.error});
 
   @override

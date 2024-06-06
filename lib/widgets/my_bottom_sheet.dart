@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/colors/gf_color.dart';
-import 'package:getwidget/components/avatar/gf_avatar.dart';
 import 'package:getwidget/components/bottom_sheet/gf_bottom_sheet.dart';
-import 'package:getwidget/components/list_tile/gf_list_tile.dart';
 
 class MyBottomSheet extends StatelessWidget {
   const MyBottomSheet({
@@ -19,7 +17,7 @@ class MyBottomSheet extends StatelessWidget {
       maxContentHeight: 123,
       contentBody: Container(
         height: 99,
-        margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: ListView(
           shrinkWrap: true,
           physics: const ScrollPhysics(),
@@ -38,7 +36,7 @@ class MyBottomSheet extends StatelessWidget {
       ),
       stickyFooter: Container(
         color: GFColors.ALT,
-        child: Row(
+        child: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Icon(

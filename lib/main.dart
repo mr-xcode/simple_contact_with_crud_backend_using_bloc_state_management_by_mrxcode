@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider<GetContactCubit>(
         create: (context) => getIt.call(),
-        child: HomeScreen(),
+        child: const HomeScreen(),
       ),
     );
   }

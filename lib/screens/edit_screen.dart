@@ -1,8 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:getwidget/components/button/gf_button.dart';
-import 'package:getwidget/components/loader/gf_loader.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/blocs/update/cubit/edit_contact_cubit.dart';
 import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/data/models/contact.dart';
 import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/module.dart';
@@ -20,9 +19,9 @@ class EditScreen extends StatelessWidget {
       create: (context) => EditContactCubit(getIt.call()),
       child: Scaffold(
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.white),
-          title: Text(
-            'Edit',
+          iconTheme: const IconThemeData(color: Colors.white),
+          title: const Text(
+            'Edit Contact',
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w600,
@@ -33,32 +32,28 @@ class EditScreen extends StatelessWidget {
         body: BlocBuilder<EditContactCubit, EditContactState>(
             builder: (context, state) {
           if (state is EditContactInitial) {
-            print('state is initial');
             return ContactForm(
               contact: contact,
             );
           } else if (state is EditContactLoading) {
-            print('state is Loading');
-            return Center(child: GFLoader());
+            return const Center(child: GFLoader());
           } else if (state is EditContactSuccess) {
-            print('state is success');
             return Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Success'),
+                  const Text('Success'),
                   GFButton(
                     onPressed: () {
                       Navigator.pop(context, 'success');
                     },
-                    child: Text('Go Home'),
+                    child: const Text('Go Home'),
                   ),
                 ],
               ),
             );
           } else if (state is EditContactFail) {
-            print('state is fail');
             return Center(child: Text(state.error));
           }
           return Container();
@@ -76,6 +71,7 @@ class ContactForm extends StatefulWidget {
   }) : super(key: key);
 
   @override
+  // ignore: no_logic_in_create_state
   State<ContactForm> createState() => _ContactFormState(contact: contact);
 }
 
@@ -96,12 +92,12 @@ class _ContactFormState extends State<ContactForm> {
     return Form(
       key: formKey,
       child: ListView(
-        padding: EdgeInsets.all(9),
+        padding: const EdgeInsets.all(9),
         children: [
           // First Name
           TextFormField(
             initialValue: contact.firstName,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'First Name',
             ),
@@ -112,17 +108,17 @@ class _ContactFormState extends State<ContactForm> {
               return null;
             },
             onSaved: (value) {
-              this._firstName = value ?? '';
+              _firstName = value ?? '';
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 9,
           ),
 
           // Last Name
           TextFormField(
             initialValue: contact.lastName,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Last Name',
             ),
@@ -133,17 +129,17 @@ class _ContactFormState extends State<ContactForm> {
               return null;
             },
             onSaved: (value) {
-              this._lastName = value ?? '';
+              _lastName = value ?? '';
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 9,
           ),
 
           // Nick Name
           TextFormField(
             initialValue: contact.nickName,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Nick Name',
             ),
@@ -154,17 +150,17 @@ class _ContactFormState extends State<ContactForm> {
               return null;
             },
             onSaved: (value) {
-              this._nickName = value ?? '';
+              _nickName = value ?? '';
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 9,
           ),
 
           // DOB Picker
           TextFormField(
             initialValue: contact.dateOfBirth,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Date Of Birth (30-12-2000)',
             ),
@@ -175,17 +171,17 @@ class _ContactFormState extends State<ContactForm> {
               return null;
             },
             onSaved: (value) {
-              this._dateOfBirth = value ?? '';
+              _dateOfBirth = value ?? '';
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 9,
           ),
 
           // Gender
           TextFormField(
             initialValue: contact.gender,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Gender (Male/ Female ?)',
             ),
@@ -196,17 +192,17 @@ class _ContactFormState extends State<ContactForm> {
               return null;
             },
             onSaved: (value) {
-              this._gender = value ?? '';
+              _gender = value ?? '';
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 9,
           ),
 
           // Phone
           TextFormField(
             initialValue: contact.phone,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Phone',
             ),
@@ -217,17 +213,17 @@ class _ContactFormState extends State<ContactForm> {
               return null;
             },
             onSaved: (value) {
-              this._phone = value ?? '';
+              _phone = value ?? '';
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 9,
           ),
 
           // Email
           TextFormField(
             initialValue: contact.email,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Email',
             ),
@@ -238,17 +234,17 @@ class _ContactFormState extends State<ContactForm> {
               return null;
             },
             onSaved: (value) {
-              this._email = value ?? '';
+              _email = value ?? '';
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 9,
           ),
 
           // Address
           TextFormField(
             initialValue: contact.address,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Address',
             ),
@@ -259,11 +255,11 @@ class _ContactFormState extends State<ContactForm> {
               return null;
             },
             onSaved: (value) {
-              this._address = value ?? '';
+              _address = value ?? '';
             },
           ),
 
-          SizedBox(
+          const SizedBox(
             height: 9,
           ),
           GFButton(
@@ -271,6 +267,7 @@ class _ContactFormState extends State<ContactForm> {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
                 String id = contact.id;
+                // ignore: no_leading_underscores_for_local_identifiers
                 Contact _contact = Contact(
                     id: id,
                     firstName: _firstName,
@@ -285,7 +282,20 @@ class _ContactFormState extends State<ContactForm> {
                     .editContact(id, _contact);
               }
             },
-            child: Text('Edit'),
+            color: GFColors.ALT,
+            shape: GFButtonShape.pills,
+            icon: const Icon(
+              Icons.edit_outlined,
+              color: Colors.white,
+              size: 26,
+            ),
+            child: const Text(
+              'Edit',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
           ),
         ],
       ),

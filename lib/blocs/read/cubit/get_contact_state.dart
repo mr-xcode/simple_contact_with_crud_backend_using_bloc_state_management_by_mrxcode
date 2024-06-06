@@ -12,6 +12,7 @@ final class GetContactInitial extends GetContactState {}
 final class GetContactSuccess extends GetContactState {
   final List<Contact> contacts;
 
+  // ignore: prefer_const_constructors_in_immutables
   GetContactSuccess({required this.contacts});
 
   @override
@@ -22,6 +23,7 @@ final class GetContactSuccess extends GetContactState {
 final class GetContactFail extends GetContactState {
   final String error;
 
+  // ignore: prefer_const_constructors_in_immutables
   GetContactFail({required this.error});
 
   @override
