@@ -1,6 +1,7 @@
 import 'package:date_cupertino_bottom_sheet_picker/date_cupertino_bottom_sheet_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get_utils/src/get_utils/get_utils.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/blocs/create/cubit/post_contact_cubit.dart';
 import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/data/models/contact.dart';
@@ -132,12 +133,14 @@ class _ContactFormState extends State<ContactForm> {
           // First Name
           TextFormField(
             decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'First Name',
-            ),
+                border: OutlineInputBorder(),
+                hintText: 'John',
+                labelText: 'First Name:'),
             validator: (value) {
               if (value!.isEmpty) {
                 return 'Please enter First Name';
+              } else if (value.length < 3) {
+                return 'Too short';
               }
               return null;
             },
@@ -152,12 +155,14 @@ class _ContactFormState extends State<ContactForm> {
           // Last Name
           TextFormField(
             decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Last Name',
-            ),
+                border: OutlineInputBorder(),
+                hintText: 'Smit',
+                labelText: 'Last Name:'),
             validator: (value) {
               if (value!.isEmpty) {
                 return 'Please enter Last Name';
+              } else if (value.length < 3) {
+                return 'Too short';
               }
               return null;
             },
@@ -172,12 +177,14 @@ class _ContactFormState extends State<ContactForm> {
           // Nick Name
           TextFormField(
             decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Nick Name',
-            ),
+                border: OutlineInputBorder(),
+                hintText: 'blabla',
+                labelText: 'Nick Name:'),
             validator: (value) {
               if (value!.isEmpty) {
                 return 'Please enter Nick Name';
+              } else if (value.length < 5) {
+                return 'Too short';
               }
               return null;
             },
@@ -192,12 +199,16 @@ class _ContactFormState extends State<ContactForm> {
           // Phone
           TextFormField(
             decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Phone',
-            ),
+                border: OutlineInputBorder(),
+                hintText: '09*********',
+                labelText: 'Phone:'),
             validator: (value) {
               if (value!.isEmpty) {
                 return 'Please enter Phone';
+              } else if (value.length < 9) {
+                return 'Please enter valid phone number';
+              } else if (value.substring(0, 2) != '09') {
+                return 'Phone number in Myanmar start with 09';
               }
               return null;
             },
@@ -212,12 +223,14 @@ class _ContactFormState extends State<ContactForm> {
           // Email
           TextFormField(
             decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Email',
-            ),
+                border: OutlineInputBorder(),
+                hintText: 'username@domain.com',
+                labelText: 'Email:'),
             validator: (value) {
               if (value!.isEmpty) {
                 return 'Please enter Email';
+              } else if (!GetUtils.isEmail(value)) {
+                return 'Please enter valid email';
               }
               return null;
             },
@@ -292,7 +305,7 @@ class _ContactFormState extends State<ContactForm> {
                   setState(() {
                     genderSelectedItem = newValue ?? '';
                   });
-                  _gender = selectedItem.toString();
+                  _gender = genderSelectedItem.toString();
                 },
                 items: genderList.map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(

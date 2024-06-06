@@ -162,9 +162,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             leading: Icon(
-              (contact.gender == 'Male' || contact.gender == 'male')
+              (contact.gender == 'Male')
                   ? Icons.boy_rounded
-                  : Icons.girl_rounded,
+                  : (contact.gender == 'Female')
+                      ? Icons.girl_rounded
+                      : Icons.question_mark_sharp,
               size: 33,
             ),
           ),
