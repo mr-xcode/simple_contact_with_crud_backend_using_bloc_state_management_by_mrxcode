@@ -5,6 +5,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/blocs/read/cubit/get_contact_cubit.dart';
 import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/data/models/contact.dart';
 import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/screens/add_screen.dart';
+import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/screens/detailed_screen.dart';
 import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/screens/edit_screen.dart';
 import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/widgets/my_bottom_sheet.dart';
 import 'package:simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode/widgets/my_drawer.dart';
@@ -87,19 +88,11 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Slidable(
         key: const ValueKey(0),
         startActionPane: ActionPane(
-          // A motion is a widget used to control how the pane animates.
           motion: const ScrollMotion(),
-
-          // A pane can dismiss the Slidable.
           dismissible: DismissiblePane(onDismissed: () {}),
-
-          // All actions are defined in the children parameter.
           children: [
-            // A SlidableAction can have an icon and/or a label.
             SlidableAction(
               onPressed: (context) async {
-                //await Navigator.of(context).push(MaterialPageRoute(
-                //    builder: (_) => EditScreen(contact: contact)));
                 var result = await Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
@@ -123,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SlidableAction(
               onPressed: (_) {
                 BlocProvider.of<GetContactCubit>(context)
-                    .deleteContact(contact.id ?? '0');
+                    .deleteContact(contact.id);
               },
               backgroundColor: GFColors.DANGER,
               foregroundColor: Colors.white,
@@ -132,8 +125,39 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-        child: ListTile(
-          title: Text('${contact.firstName} ${contact.lastName}'),
+        child: GestureDetector(
+          onTap: () {
+            print('pressed');
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => DetailedScreen(
+                      contact: contact,
+                    )));
+          },
+          child: ListTile(
+            title: Text(
+              '${contact.firstName} ${contact.lastName}',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            trailing: Container(
+              width: 100,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(Icons.phone_android_outlined),
+                  Text('${contact.phone}'),
+                ],
+              ),
+            ),
+            leading: Icon(
+              (contact.gender == 'Male' || contact.gender == 'male')
+                  ? Icons.boy_rounded
+                  : Icons.girl_rounded,
+              size: 33,
+            ),
+          ),
         ),
       ),
     );
