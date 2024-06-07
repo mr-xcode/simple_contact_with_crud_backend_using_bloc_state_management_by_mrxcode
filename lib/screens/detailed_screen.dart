@@ -1,7 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:io';
+
 import 'package:Contact_Plus/data/models/contact.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DetailedScreen extends StatelessWidget {
@@ -19,7 +22,9 @@ class DetailedScreen extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.white),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              _handleShareButton(context);
+            },
             icon: const Icon(Icons.share_rounded),
           ),
           const SizedBox(
@@ -187,5 +192,30 @@ class DetailedScreen extends StatelessWidget {
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  void _handleShareButton(BuildContext context) {
+    if (Platform.isIOS || Platform.isAndroid) {
+      _showShareOptions(context);
+    } else {
+      // Do nothing or show a message to the user
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content:
+              Text('Share functionality is not available on this platform.'),
+        ),
+      );
+    }
+  }
+
+  void _showShareOptions(BuildContext context) {
+    Share.share(
+        'Check out this app: https://github.com/mr-xcode/simple_contact_with_crud_backend_using_bloc_state_management_by_mrxcode',
+        subject: 'Check out this cool contact app',
+        sharePositionOrigin: Rect.fromLTWH(
+            MediaQuery.of(context).size.width / 2 - 100,
+            MediaQuery.of(context).size.height / 2 - 100,
+            200,
+            200));
   }
 }
