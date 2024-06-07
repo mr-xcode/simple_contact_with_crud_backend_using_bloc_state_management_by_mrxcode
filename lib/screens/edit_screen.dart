@@ -135,7 +135,7 @@ class _ContactFormState extends State<ContactForm> {
 
   @override
   Widget build(BuildContext context) {
-    _dateOfBirth = selectedDate.toString();
+    _dateOfBirth = selectedDate.toString().substring(0, 10);
     _gender = genderSelectedItem;
     _address = selectedItem;
     //contact.gender;

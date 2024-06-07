@@ -74,7 +74,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 });
           } else if (state is GetContactFail) {
             return Center(
-              child: Text(state.error),
+              child: Text(
+                'May be there is no Internet, try again later!',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: GFColors.DANGER,
+                ),
+              ),
             );
           }
           return const Center(

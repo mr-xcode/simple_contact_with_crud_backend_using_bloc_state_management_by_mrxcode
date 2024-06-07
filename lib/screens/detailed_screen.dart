@@ -2,6 +2,7 @@
 import 'package:Contact_Plus/data/models/contact.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailedScreen extends StatelessWidget {
   final Contact contact;
@@ -55,7 +56,8 @@ class DetailedScreen extends StatelessWidget {
 
             // Nick Name
             Card(
-              elevation: 0.3,
+              elevation: 0,
+              color: Colors.white,
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Row(
@@ -77,7 +79,9 @@ class DetailedScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text('Birthday: '),
-                    Text(contact.dateOfBirth),
+                    Text(
+                      contact.dateOfBirth.substring(0, 10),
+                    ),
                   ],
                 ),
               ),
@@ -85,7 +89,8 @@ class DetailedScreen extends StatelessWidget {
 
             // Gendre
             Card(
-              elevation: 0.3,
+              elevation: 0,
+              color: Colors.white,
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Row(
@@ -99,23 +104,30 @@ class DetailedScreen extends StatelessWidget {
             ),
 
             // Phone
-            Card(
-              elevation: 0.3,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text('Phone: '),
-                    Text(contact.phone),
-                  ],
+            GestureDetector(
+              onTap: () {
+                print('Phone call');
+                _makeCall('${contact.phone}');
+              },
+              child: Card(
+                elevation: 0.3,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text('Phone: '),
+                      Text(contact.phone),
+                    ],
+                  ),
                 ),
               ),
             ),
 
             // Email
             Card(
-              elevation: 0.3,
+              elevation: 0,
+              color: Colors.white,
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Row(
@@ -149,6 +161,7 @@ class DetailedScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pop();
               },
+              size: GFSize.LARGE,
               blockButton: true,
               icon: const Icon(
                 Icons.home_outlined,
@@ -165,5 +178,14 @@ class DetailedScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _makeCall(String phoneNumber) async {
+    final url = 'tel:$phoneNumber';
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
