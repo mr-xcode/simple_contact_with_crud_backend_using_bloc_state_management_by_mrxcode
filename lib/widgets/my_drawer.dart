@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({
@@ -94,12 +95,16 @@ class MyDrawer extends StatelessWidget {
               ListTile(
                 title: const Text('About Us'),
                 leading: const Icon(Icons.info_outline, color: GFColors.ALT),
-                onTap: () {},
+                onTap: () {
+                  _launchWebsite('https://github.com/mr-xcode');
+                },
               ),
               ListTile(
                 title: const Text('Contact Us'),
                 leading: const Icon(Icons.contact_page, color: GFColors.ALT),
-                onTap: () {},
+                onTap: () {
+                  _launchWebsite('https://github.com/mr-xcode');
+                },
               ),
               Divider(
                 color: GFColors.ALT,
@@ -107,17 +112,23 @@ class MyDrawer extends StatelessWidget {
               ListTile(
                 title: const Text('Terms & Conditions'),
                 leading: const Icon(Icons.book_outlined, color: GFColors.ALT),
-                onTap: () {},
+                onTap: () {
+                  _launchWebsite('https://github.com/mr-xcode');
+                },
               ),
               ListTile(
                 title: const Text('Help & Support'),
                 leading: const Icon(Icons.help_outline, color: GFColors.ALT),
-                onTap: () {},
+                onTap: () {
+                  _launchWebsite('https://github.com/mr-xcode');
+                },
               ),
               ListTile(
                 title: const Text('Follow on Facebook'),
                 leading: const Icon(Icons.facebook, color: GFColors.ALT),
-                onTap: () {},
+                onTap: () {
+                  _launchFacebookPage();
+                },
               ),
               Divider(
                 color: GFColors.ALT,
@@ -180,5 +191,31 @@ class MyDrawer extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  Future<void> _launchFacebookPage() async {
+    final String facebookUrl = 'https://www.facebook.com/mrxcode.dev';
+
+    if (await canLaunchUrl(Uri.parse(facebookUrl))) {
+      await launchUrl(
+        Uri.parse(facebookUrl),
+        mode: LaunchMode.externalApplication,
+      );
+    } else {
+      throw 'Could not launch $facebookUrl';
+    }
+  }
+
+  Future<void> _launchWebsite(String url) async {
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: false,
+        forceWebView: false,
+        webOnlyWindowName: "_blank",
+      );
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

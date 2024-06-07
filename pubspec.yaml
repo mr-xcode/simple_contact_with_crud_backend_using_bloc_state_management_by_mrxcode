@@ -25,6 +25,7 @@ dependencies:
   get: ^4.6.6
   url_launcher: ^6.3.0
   share: ^2.0.4
+  webview_flutter: ^4.8.0
 
 dev_dependencies:
   flutter_test:
