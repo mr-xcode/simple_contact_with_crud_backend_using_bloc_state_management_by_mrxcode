@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
-          'Contact',
+          'Contact Plus',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w600,
@@ -41,6 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ? _controller.hideBottomSheet()
                   : _controller.showBottomSheet();
             },
+            iconSize: GFSize.MEDIUM,
+            tooltip: 'About App',
             icon: const Icon(Icons.info_outline_rounded),
           ),
           const SizedBox(
@@ -51,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       drawer: const MyDrawer(),
       bottomSheet: MyBottomSheet(controller: _controller),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
           var result = await Navigator.of(context)
               .push(MaterialPageRoute(builder: (_) => const AddScreen()));
@@ -61,7 +63,16 @@ class _HomeScreenState extends State<HomeScreen> {
             BlocProvider.of<GetContactCubit>(context).getContact();
           }
         },
-        child: const Icon(Icons.add),
+        tooltip: 'Create New Contact',
+        label: Text(
+          'Contact',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+        ),
+        icon: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+        backgroundColor: GFColors.ALT,
       ),
       body: BlocBuilder<GetContactCubit, GetContactState>(
         builder: (context, state) {

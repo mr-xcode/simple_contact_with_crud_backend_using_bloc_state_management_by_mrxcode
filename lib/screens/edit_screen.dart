@@ -29,6 +29,12 @@ class EditScreen extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           ),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.menu),
+            ),
+          ],
           backgroundColor: Colors.deepPurple[400],
         ),
         body: BlocBuilder<EditContactCubit, EditContactState>(

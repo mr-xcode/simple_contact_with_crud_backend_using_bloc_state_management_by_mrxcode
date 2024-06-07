@@ -24,6 +24,12 @@ class AddScreen extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           ),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.menu),
+            ),
+          ],
           backgroundColor: Colors.deepPurple[400],
         ),
         body: BlocBuilder<PostContactCubit, PostContactState>(
@@ -364,6 +370,7 @@ class _ContactFormState extends State<ContactForm> {
             color: GFColors.ALT,
             textColor: Colors.white,
             shape: GFButtonShape.pills,
+            size: GFSize.MEDIUM,
             icon: Icon(
               Icons.add,
               size: 19,
