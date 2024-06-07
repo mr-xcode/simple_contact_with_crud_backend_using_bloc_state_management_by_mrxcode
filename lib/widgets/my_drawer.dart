@@ -52,23 +52,105 @@ class MyDrawer extends StatelessWidget {
               ),
               ListTile(
                 title: const Text('Notifications'),
-                leading: const Icon(Icons.notifications_outlined),
+                leading: const Icon(
+                  Icons.notifications_outlined,
+                  color: GFColors.ALT,
+                ),
+                trailing: GFToggle(
+                  onChanged: (val) {},
+                  enabledTrackColor: GFColors.ALT,
+                  value: true,
+                ),
                 onTap: () {},
               ),
               ListTile(
                 title: const Text('Reviews'),
-                leading: const Icon(Icons.reviews_outlined),
+                leading: const Icon(
+                  Icons.reviews_outlined,
+                  color: GFColors.ALT,
+                ),
                 onTap: () {},
               ),
               ListTile(
                 title: const Text('Payments'),
-                leading: const Icon(Icons.payment_outlined),
+                leading: const Icon(
+                  Icons.payment_outlined,
+                  color: GFColors.ALT,
+                ),
                 onTap: () {},
+              ),
+              Divider(
+                color: GFColors.ALT,
               ),
               ListTile(
                 title: const Text('Settings'),
-                leading: const Icon(Icons.settings_outlined),
+                leading:
+                    const Icon(Icons.settings_outlined, color: GFColors.ALT),
                 onTap: () {},
+              ),
+              Divider(
+                color: GFColors.ALT,
+              ),
+              ListTile(
+                title: const Text('About Us'),
+                leading: const Icon(Icons.info_outline, color: GFColors.ALT),
+                onTap: () {},
+              ),
+              ListTile(
+                title: const Text('Contact Us'),
+                leading: const Icon(Icons.contact_page, color: GFColors.ALT),
+                onTap: () {},
+              ),
+              Divider(
+                color: GFColors.ALT,
+              ),
+              ListTile(
+                title: const Text('Terms & Conditions'),
+                leading: const Icon(Icons.book_outlined, color: GFColors.ALT),
+                onTap: () {},
+              ),
+              ListTile(
+                title: const Text('Help & Support'),
+                leading: const Icon(Icons.help_outline, color: GFColors.ALT),
+                onTap: () {},
+              ),
+              ListTile(
+                title: const Text('Follow on Facebook'),
+                leading: const Icon(Icons.facebook, color: GFColors.ALT),
+                onTap: () {},
+              ),
+              Divider(
+                color: GFColors.ALT,
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '© 2024 Bla Bla Bla',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Powered by Bla Bla',
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 100,
               ),
             ],
           ),
